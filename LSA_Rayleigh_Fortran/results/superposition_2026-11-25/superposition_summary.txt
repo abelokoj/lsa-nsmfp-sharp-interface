@@ -1,0 +1,7 @@
+# Output of plotting/paper1/superposition_check.py on the six twin-difference fields of the superposition runs (26 Nov 2026).
+# The per-snapshot values are in analysis/superposition.csv. The fields themselves are archived on Zenodo (README.md, Level 2).
+initial shape of C: |harmonic 2| / |harmonic 1| = 0.988 (expected 1; about 0 means the broadband build was not used)
+vel: max relative error 7.501% over 155 snapshots with amp_C <= 0.1 R0 (median 2.724%)
+ls: max relative error 7.426% over 156 snapshots with amp_C <= 0.1 R0 (median 1.827%)
+vel: minimum 2.210% at amp_C = 0.0094 R0 (t = 4.684); below it error ~ amp^-1.33; above it error ~ amp^0.41
+ls: minimum 0.956% at amp_C = 0.0186 R0 (t = 7.107); below it error ~ amp^-1.43; above it error ~ amp^0.57

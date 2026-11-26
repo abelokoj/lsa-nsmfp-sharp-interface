@@ -1,0 +1,40 @@
+subspace (from export): 18432 dof x 140 snapshots, dt= 8.07604E-02  runs/analysis/spsum_16/broadband/export_ls
+narrow band |r - r0| <   2.00 dr: 1152 rows kept
+reduced-map residual  1.470E-04  (||Y - U S~ U^T X|| / ||Y||; small means a linear sequence)
+DMD archive written to runs/analysis/spsum_16/broadband/dmd_ls
+
+
+Decomposition: rank 139, dt 8.076E-02, 139 modes
+mode  growth sigma  freq Im(w)/2pi  |lambda|  amplitude
+-------------------------------------------------------
+   0    -44.080996       -0.000000  0.028439  1.970E+01
+   1     -2.824728       -0.000000  0.796024  1.905E+00
+   2     -2.947646       -5.556120  0.788161  1.608E+00
+   3     -2.947646        5.556120  0.788161  1.608E+00
+   4     -2.760858       -2.814406  0.800141  1.274E+00
+   5     -2.760858        2.814406  0.800141  1.274E+00
+   6     -2.924184       -4.235290  0.789656  1.249E+00
+   7     -2.924184        4.235290  0.789656  1.249E+00
+   8     -2.790157        1.411215  0.798250  1.227E+00
+   9     -2.790157       -1.411215  0.798250  1.227E+00
+-------------------------------------------------------
+
+
+Rayleigh-Plateau growth rate at k r0 = 0.7000
+quantity                       growth rate  note                                      
+--------------------------------------------------------------------------------------
+DMD: leading stationary mode      0.034602                                            
+log-norm slope fit                0.308990  r^2 = 0.99970                             
+viscous exact (Chandrasekhar)     0.329367  theory, benchmark                         
+viscous approx (Weber)            0.328941  theory                                    
+exact inviscid (Rayleigh)         0.343327  theory                                    
+two-fluid inviscid                0.343283  theory, rho_g = 1.225E-03                 
+two-fluid viscous (Tomotika)      0.328689  theory, rho_g, mu_g = 1.225E-03, 2.600E-04
+--------------------------------------------------------------------------------------
+comparison                     departure  verdict                   
+--------------------------------------------------------------------
+measured vs viscous exact       -89.49 %                            
+measured vs inviscid            -89.92 %                            
+measured vs two-fluid viscous   -89.47 %                            
+DMD vs norm fit                 792.99 %  DISAGREE: check fit window
+--------------------------------------------------------------------

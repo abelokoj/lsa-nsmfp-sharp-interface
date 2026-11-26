@@ -1,0 +1,47 @@
+subspace (from export): 18432 dof x 8 snapshots, dt= 8.07604E-02  runs/analysis/spsum_16/export_ls
+narrow band |r - r0| <   2.00 dr: 1152 rows kept
+
+rank scan 2 .. 12
+  rank   2  rate 0.358619  residual  5.263E-04
+  rank   3  rate 0.351884  residual  4.967E-04
+  rank   4  rate 0.338043  residual  4.588E-04
+  rank   5  rate 0.337686  residual  4.350E-04
+  rank   6  rate 0.337833  residual  3.790E-04
+  rank   7  rate 0.339308  residual  3.042E-04
+  median rate   0.338675   IQR  1.085E-02   (6 of 6 ranks gave a rate)
+  median vs viscous exact   49.541 %
+reduced-map residual  3.042E-04  (||Y - U S~ U^T X|| / ||Y||; small means a linear sequence)
+DMD archive written to runs/analysis/spsum_16/dmd_ls
+
+
+Decomposition: rank 7, dt 8.076E-02, 7 modes
+mode  growth sigma  freq Im(w)/2pi  |lambda|  amplitude
+-------------------------------------------------------
+   0      0.339308        0.000000  1.027782  1.591E+00
+   1      0.249434       -0.000000  1.020349  6.990E-01
+   2     -3.514423       -2.712476  0.752898  4.801E-04
+   3     -3.514423        2.712476  0.752898  4.801E-04
+   4     -3.655432       -6.191156  0.744372  4.754E-04
+   5     -3.658627        4.447587  0.744180  3.703E-04
+   6     -3.658627       -4.447587  0.744180  3.703E-04
+-------------------------------------------------------
+
+
+Rayleigh-Plateau growth rate at k r0 = 0.3500
+quantity                       growth rate  note                                      
+--------------------------------------------------------------------------------------
+DMD: leading stationary mode      0.339308                                            
+log-norm slope fit                0.322371  r^2 = 1.00000                             
+viscous exact (Chandrasekhar)     0.226476  theory, benchmark                         
+viscous approx (Weber)            0.226442  theory                                    
+exact inviscid (Rayleigh)         0.230088  theory                                    
+two-fluid inviscid                0.230076  theory, rho_g = 1.225E-03                 
+two-fluid viscous (Tomotika)      0.226003  theory, rho_g, mu_g = 1.225E-03, 2.600E-04
+--------------------------------------------------------------------------------------
+comparison                     departure  verdict   
+----------------------------------------------------
+measured vs viscous exact        49.82 %            
+measured vs inviscid             47.47 %            
+measured vs two-fluid viscous    50.13 %            
+DMD vs norm fit                   4.99 %  consistent
+----------------------------------------------------

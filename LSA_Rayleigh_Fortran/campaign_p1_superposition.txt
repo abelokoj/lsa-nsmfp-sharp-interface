@@ -1,0 +1,27 @@
+# campaign_p1_superposition.txt -- Paper 1: superposition test with two perturbation shapes. Written 2026-11-24.
+#
+# Paper 1 shows that the twin difference is proportional to the amplitude (homogeneity). This tests additivity: the response to the sum of two
+# shapes against the sum of the responses to each. One box of length L = 2 pi / 0.35 = 17.952 R0 (two wavelengths at k r0 = 0.7), 16 cells per radius,
+# wall at 4 R0, Oh = 0.02, eps = 0.04 dr = 2.5e-3 per shape, the settings of sw070_16:
+#   sp035_16  shape A: eps sin(2 pi z / L)              (k r0 = 0.35, one wave in the box)
+#   sp070_16  shape B: eps sin(4 pi z / L)              (k r0 = 0.70, --n-waves 2: two waves in the same box)
+#   spsum_16  shape C: eps [sin(2 pi z/L + g) + sin(4 pi z/L + 2g)], g = 2.39996 (--broadband 2: harmonics 1 and 2 of the box)
+# Both harmonics of C carry the same axial shift, delta = g L / (2 pi) = 6.857 R0 = 110.006 cells, so C is exactly (A + B) translated by delta; the check
+# (paper1_method/code/superposition_check.py) translates D_A + D_B by delta and compares it with D_C snapshot by snapshot, D = perturbed - twin.
+#
+# Checked with make_inputs on 2026-11-24: all six decks have 64 x 288 cells, dt = 1.553e-3, 8372 steps and amr.plot_int = 52 (161 plotfiles, as sw070_16);
+# each perturbed deck differs from its twin only in ns.radblob; A and B differ only in ns.yblob, A and C only in ns.radblob3. The n_periods of the
+# k r0 = 0.35 rows (2.95) is chosen so that their length and output interval equal those of the k r0 = 0.7 row.
+#
+# Every row needs the broadband build (ns.radblob3 is read only there), and twins and perturbed runs must use the same build and rank count, so submit
+# the whole file in one array with SOLVER_EXE pointing at that build (run_instructions, Paper 1). The three twins are the same unperturbed column and
+# should agree to round-off, which is a free check of determinism. Cost: each run has twice the cells of sw070_16 (37 to 61 core-hours per perturbed run
+# in October), so about 80 to 120 core-hours per perturbed run and 400 to 600 in all.
+#
+# Columns: label kr0 eps cells_per_r0 rmax n_periods snapshots [make_inputs options], as in campaign_p3_16.txt.
+sp035_16        0.35  2.5e-3 16   4.0   2.95  160   --eps-cells 0.04
+sp035_16.base   0.35  0      16   4.0   2.95  160
+sp070_16        0.7   2.5e-3 16   4.0   4.3   160   --eps-cells 0.04 --n-waves 2
+sp070_16.base   0.7   0      16   4.0   4.3   160   --n-waves 2
+spsum_16        0.35  2.5e-3 16   4.0   2.95  160   --eps-cells 0.04 --broadband 2
+spsum_16.base   0.35  0      16   4.0   2.95  160   --broadband 2

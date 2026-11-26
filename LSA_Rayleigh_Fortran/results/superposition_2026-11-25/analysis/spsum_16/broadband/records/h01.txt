@@ -1,0 +1,10 @@
+record: runs/records/spsum_16_harmonics/h01.dat
+  samples 162   t =     0.0000 ..    13.0024
+  amplitude bound a/r0 <=  0.100   (not reached)
+  window t =    11.5487 ..    12.4371  (12 samples,   0.20 e-folds)
+  WARNING: the window spans less than half an e-fold; the rate is poorly constrained
+  growth rate s =   0.227609   1 - r^2 =  3.207E-06
+  viscous exact  =   0.226476   (   0.500 %)
+  inviscid       =   0.230088   (  -1.077 %)
+  two-fluid visc =   0.226003   (   0.711 %)
+  wrote runs/analysis/spsum_16/broadband/records/h01.csv

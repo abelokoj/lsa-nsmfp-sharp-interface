@@ -1,0 +1,34 @@
+diff --git a/NS_fluids_lib/MITSUHIRO_PIPE.F90 b/NS_fluids_lib/MITSUHIRO_PIPE.F90
+index 0d83c9e3..1a942b19 100755
+--- a/NS_fluids_lib/MITSUHIRO_PIPE.F90
++++ b/NS_fluids_lib/MITSUHIRO_PIPE.F90
+@@ -43,6 +43,8 @@ real(amrex_real), INTENT(in) :: x,y,z
+ real(amrex_real) ht,rr
+ real(amrex_real) pipexlo,pipexhi
+ integer im_solid_pipe
++real(amrex_real) pert_sum
++integer imode_bb
+ 
+ if (SDIM.eq.2) then
+  if (abs(z-y).le.EPS2) then
+@@ -127,7 +129,19 @@ else if ((axis_dir.eq.1).or. &
+ 
+ else if (axis_dir.eq.4) then
+ 
+- dist(1)=-abs(x)+xblob+radblob*sin(two*Pi*y/yblob)
++ if (radblob3.ge.half) then
++  ! broadband perturbation for the linear stability analysis:
++  ! nint(radblob3) axial harmonics of the box length yblob, each of
++  ! amplitude radblob, phases spread by the golden angle.
++  pert_sum=zero
++  do imode_bb=1,nint(radblob3)
++   pert_sum=pert_sum+ &
++    sin(two*Pi*imode_bb*y/yblob+imode_bb*2.399963229728653d0)
++  enddo
++  dist(1)=-abs(x)+xblob+radblob*pert_sum
++ else
++  dist(1)=-abs(x)+xblob+radblob*sin(two*Pi*y/yblob)
++ endif
+ 
+ else if (axis_dir.eq.5) then ! all gas
+ 
